@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+     <link href="css/shanzi.css" rel="stylesheet" />
+
+  </head>
+  <body>
+    <div id="box">
+      <div style=""></div>
+      <div class=""></div>
+      <div class=""></div>
+      <div class=""></div>
+      <div class=""></div>
+      <div class=""></div>
+      <div class=""></div>
+      <div class=""></div>
+      <div class=""></div>
+      <div class=""></div>
+
+    </div>
+    <script type="text/javascript">
+    var box = document.getElementById("box");
+    var divs = box.getElementsByTagName("div");
+    var onoff = true;
+    setTimeout(go,300);
+    divs[9].onclick=function(){
+      if (onoff) {
+        shink();
+      }
+      else {
+        go();
+      }
+      onoff = !onoff;
+    }
+
+    function go(){
+      for (var i = 0; i < divs.length; i++) {
+        divs[i].style.transform = "rotate("+(350-(i*17))+"deg)";
+      }
+    }
+    function shink(){
+      for(i=0;i<divs.length;i++)
+      divs[i].style.transform ="rotate(0deg)";
+    }
+    for(i=1;i<divs.length-1;i++)
+    {
+      divs[i].index=i;
+      divs[i].onclick=function(){
+
+        for(i=0;i<divs.length;i++)
+        {
+          if (i<this.index) {
+            divs[i].style.transform = "rotate("+(360-(i*14)+ this.index*17-80-10 )+"deg)";
+          }
+          if (i>this.index) {
+            divs[i].style.transform = "rotate("+(360-(i*14)+ this.index*17-80-23 )+"deg)";
+          }
+        }
+        divs[this.index].style.transform = "rotate("+(360-(this.index*17)+ this.index*17-80 )+"deg)";
+      }
+
+    }
+
+
+    </script>
+
+  </body>
+</html>
